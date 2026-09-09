@@ -152,7 +152,8 @@
   }
 
   async function submitPrediction(payload) {
-    const response = await fetch(API_URL, {
+    // UPDATED: added /predict to the URL
+    const response = await fetch(`${API_URL}/predict`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -192,7 +193,7 @@
     } catch (err) {
       const isNetworkError = err instanceof TypeError;
       const message = isNetworkError
-        ? "Couldn't reach the prediction server. Make sure the FastAPI backend is running at http://127.0.0.1:8000."
+        ? "Couldn't reach the prediction server. Make sure the FastAPI backend is running."
         : `Prediction failed: ${err.message}`;
       showError(message);
       resultNote.textContent = "Waiting for a valid response…";
