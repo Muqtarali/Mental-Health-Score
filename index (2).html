@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Balance Check · Digital Habits &amp; Mental Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style (2).css" />
+</head>
+<body>
+
+  <div class="backdrop" aria-hidden="true">
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <circle cx="1050" cy="90" r="380" class="ring ring-a" />
+      <circle cx="1050" cy="90" r="280" class="ring ring-b" />
+      <circle cx="1050" cy="90" r="180" class="ring ring-c" />
+    </svg>
+  </div>
+
+  <main class="page">
+
+    <header class="hero">
+      <p class="hero-kicker">Student wellbeing tool</p>
+      <h1 class="hero-title">How does your day add&nbsp;up?</h1>
+      <p class="hero-lede">
+        Screen time, sleep, study, movement, stress — enter today's numbers and watch
+        the estimate update as soon as the model responds.
+      </p>
+    </header>
+
+    <div class="content-grid">
+
+      <section class="panel form-panel">
+        <form id="predictForm" novalidate>
+
+          <fieldset class="group">
+            <legend>About you</legend>
+            <div class="grid">
+
+              <div class="field">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" min="1" step="1" placeholder="20" required />
+                <span class="hint">Whole years, greater than 0</span>
+              </div>
+
+              <div class="field">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                  <option value="" disabled selected>Choose one</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" list="countryList" placeholder="India" autocomplete="off" required />
+                <datalist id="countryList">
+                  <option value="India"></option>
+                  <option value="USA"></option>
+                  <option value="Canada"></option>
+                  <option value="Australia"></option>
+                  <option value="UK"></option>
+                  <option value="Germany"></option>
+                  <option value="Mexico"></option>
+                  <option value="Turkey"></option>
+                  <option value="France"></option>
+                </datalist>
+              </div>
+
+              <div class="field">
+                <label for="academic_level">Academic level</label>
+                <select id="academic_level" name="academic_level" required>
+                  <option value="" disabled selected>Choose one</option>
+                  <option value="High School">High School</option>
+                  <option value="Undergraduate">Undergraduate</option>
+                  <option value="Graduate">Graduate</option>
+                </select>
+              </div>
+
+            </div>
+          </fieldset>
+
+          <fieldset class="group">
+            <legend>Digital habits</legend>
+            <div class="grid">
+
+              <div class="field">
+                <label for="most_used_platform">Most-used platform</label>
+                <select id="most_used_platform" name="most_used_platform" required>
+                  <option value="" disabled selected>Choose one</option>
+                  <option value="Facebook">Facebook</option>
+                  <option value="LinkedIn">LinkedIn</option>
+                  <option value="Instagram">Instagram</option>
+                  <option value="Snapchat">Snapchat</option>
+                  <option value="Twitter">Twitter</option>
+                  <option value="YouTube">YouTube</option>
+                  <option value="TikTok">TikTok</option>
+                  <option value="LINE">LINE</option>
+                  <option value="KakaoTalk">KakaoTalk</option>
+                  <option value="VKontakte">VKontakte</option>
+                  <option value="WhatsApp">WhatsApp</option>
+                  <option value="WeChat">WeChat</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="purpose_of_use">Main purpose</label>
+                <select id="purpose_of_use" name="purpose_of_use" required>
+                  <option value="" disabled selected>Choose one</option>
+                  <option value="Networking">Networking</option>
+                  <option value="Education">Education</option>
+                  <option value="Entertainment">Entertainment</option>
+                  <option value="News">News</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="avg_daily_usage_hours">Average daily screen time <span class="unit" id="usageOut">4.5 h</span></label>
+                <input type="range" id="avg_daily_usage_hours" name="avg_daily_usage_hours" min="0" max="24" step="0.1" value="4.5" required />
+                <span class="hint">0–24 hours</span>
+              </div>
+
+              <div class="field">
+                <label for="daily_unlocks">Daily phone unlocks</label>
+                <input type="number" id="daily_unlocks" name="daily_unlocks" min="0" step="1" placeholder="85" required />
+                <span class="hint">0 or more</span>
+              </div>
+
+            </div>
+          </fieldset>
+
+          <fieldset class="group">
+            <legend>Lifestyle &amp; stress</legend>
+            <div class="grid">
+
+              <div class="field">
+                <label for="study_hours">Study hours per day</label>
+                <input type="number" id="study_hours" name="study_hours" min="0" step="0.1" placeholder="5.0" required />
+              </div>
+
+              <div class="field">
+                <label for="physical_activity_hours">Physical activity per day</label>
+                <input type="number" id="physical_activity_hours" name="physical_activity_hours" min="0" step="0.1" placeholder="1.5" required />
+              </div>
+
+              <div class="field">
+                <label for="sleep_hours_per_night">Sleep per night</label>
+                <input type="number" id="sleep_hours_per_night" name="sleep_hours_per_night" min="0" step="0.1" placeholder="7.0" required />
+              </div>
+
+              <div class="field">
+                <label for="stress_level">Current stress level</label>
+                <select id="stress_level" name="stress_level" required>
+                  <option value="" disabled selected>Choose one</option>
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                  <option value="Very High">Very High</option>
+                </select>
+              </div>
+
+            </div>
+          </fieldset>
+
+          <div class="form-footer">
+            <p class="error-message" id="formError" role="alert" hidden></p>
+            <button type="submit" id="submitBtn" class="submit-btn">
+              <span class="btn-label">Get my score</span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
+          </div>
+
+        </form>
+      </section>
+
+      <aside class="panel result-rail" id="resultPanel">
+        <p class="result-kicker">Predicted score</p>
+
+        <div class="gauge-wrap">
+          <svg class="gauge" viewBox="0 0 220 220">
+            <defs>
+              <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#3fa579" />
+                <stop offset="55%" stop-color="#e2a23d" />
+                <stop offset="100%" stop-color="#ef7f5c" />
+              </linearGradient>
+            </defs>
+            <circle class="gauge-track" cx="110" cy="110" r="92" />
+            <circle class="gauge-fill" id="gaugeFill" cx="110" cy="110" r="92" />
+          </svg>
+          <div class="gauge-number">
+            <span id="scoreValue">—</span>
+          </div>
+        </div>
+
+        <p class="result-note" id="resultNote">
+          Fill in the form and submit to see an estimate here.
+        </p>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <script src="script (2).js"></script>
+</body>
+</html>
