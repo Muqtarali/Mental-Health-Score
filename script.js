@@ -152,29 +152,36 @@
     resultRail.classList.add("just-updated");
   }
 
-  async function submitPrediction(payload) {
-    const response = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+async function submitPrediction(payload) {
+  const response = await fetch(`${API_URL}/predict`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload),
+  });
 
-    if (!response.ok) {
-      let detail = `Server responded with status ${response.status}.`;
-      try {
-        const body = await response.json();
-        if (body && body.detail) {
-          detail = typeof body.detail === "string" ? body.detail : JSON.stringify(body.detail);
-        }
-      } catch (_) {
-        /* response wasn't JSON — keep the generic message */
+  if (!response.ok) {
+    let detail = `Server responded with status ${response.status}.`;
+
+    try {
+      const body = await response.json();
+
+      if (body && body.detail) {
+        detail =
+          typeof body.detail === "string"
+            ? body.detail
+            : JSON.stringify(body.detail);
       }
-      throw new Error(detail);
+    } catch (_) {
+      // Response wasn't JSON
     }
 
-    return response.json();
+    throw new Error(detail);
   }
 
+  return response.json();
+}
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     clearError();
