@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const API_URL = "http://127.0.0.1:8000/predict";
+  const API_URL = "https://mental-health-score-wvow.onrender.com";
 
   // The trained dataset's mental health score runs roughly 0–10.
   // Used only to animate the gauge ring; the raw number is always shown as-is.
